@@ -11,16 +11,20 @@ const propertySetters = {
     head(obj) {
         obj && Object.keys(obj).forEach(selector => setHeadElementAttributes(selector, obj[selector]));
     },
+    ogTitle(val) {
+        setMetaContent('property="og:title"', val);
+    },
+    ogDescription(val) {
+        setMetaContent('property="og:description"', val);
+    },
     title(val) {
         document.title = isRemoveValue(val) ? '' : val;
         setMetaContent('itemprop="name"', val);
-        setMetaContent('property="og:title"', val);
         setMetaContent('name="twitter:title"', val);
     },
     description(val) {
         setMetaContent('name="description"', val);
         setMetaContent('itemprop="description"', val);
-        setMetaContent('property="og:description"', val);
         setMetaContent('name="twitter:description"', val);
     },
     keywords(val) {
